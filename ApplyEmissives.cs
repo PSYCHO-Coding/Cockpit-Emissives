@@ -57,7 +57,7 @@ namespace PSYCHO.ApplyEmissives
             BlockColor = Block.SlimBlock.ColorMaskHSV;
             BlockTexture = Block.SlimBlock.SkinSubtypeId;
 
-            CheckAndSetEmissives();
+            CheckAndSetEmissives(true);
         }
 
         private void IsWorkingChanged(IMyCubeBlock obj)
@@ -65,7 +65,7 @@ namespace PSYCHO.ApplyEmissives
             BlockColor = Block.SlimBlock.ColorMaskHSV;
             BlockTexture = Block.SlimBlock.SkinSubtypeId;
 
-            CheckAndSetEmissives();
+            CheckAndSetEmissives(true);
         }
 
         // Cleanup.
@@ -78,7 +78,7 @@ namespace PSYCHO.ApplyEmissives
         }
 
         // Mostly needed due to not having a 'block recolored' event.
-        public override void UpdateBeforeSimulation100()
+        public override void UpdateAfterSimulation100()
         {
             if (Block == null)
             {
@@ -113,18 +113,18 @@ namespace PSYCHO.ApplyEmissives
 
             if (updateEmissives)
             {
-                CheckAndSetEmissives();
+                CheckAndSetEmissives(true);
             }
         }
 
         // Conditions and colors go here.
-        void CheckAndSetEmissives()
+        void CheckAndSetEmissives(bool _force = false)
         {
             if (Block.IsFunctional)
             {
                 if (Block.IsWorking)
                 {
-                    if (EmissiveColor != FullyWorkiongEmissiveColor)
+                    if (EmissiveColor != FullyWorkiongEmissiveColor || _force)
                     {
                         EmissiveColor = FullyWorkiongEmissiveColor;
                         Block.SetEmissiveParts("Emissive2", EmissiveColor, 10f);
@@ -132,7 +132,7 @@ namespace PSYCHO.ApplyEmissives
                 }
                 else
                 {
-                    if (EmissiveColor != BustedEmissiveColor)
+                    if (EmissiveColor != BustedEmissiveColor || _force)
                     {
                         EmissiveColor = BustedEmissiveColor;
                         Block.SetEmissiveParts("Emissive2", EmissiveColor, 0f);
@@ -141,7 +141,7 @@ namespace PSYCHO.ApplyEmissives
             }
             else
             {
-                if (EmissiveColor != BustedEmissiveColor)
+                if (EmissiveColor != BustedEmissiveColor || _force)
                 {
                     EmissiveColor = BustedEmissiveColor;
                     Block.SetEmissiveParts("Emissive2", EmissiveColor, 0f);
