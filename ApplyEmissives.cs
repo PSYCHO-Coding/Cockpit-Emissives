@@ -27,6 +27,8 @@ namespace PSYCHO.ApplyEmissives
         IMyCockpit Block;
         Vector3 BlockColor = Vector3.Zero;
         MyStringHash BlockTexture;
+
+        // USER CHANGABLE VARIABLES
         Color FullyWorkiongEmissiveColor = new Color(242, 110, 80);
         Color BustedEmissiveColor = new Color(0, 0, 0);
         Color EmissiveColor = new Color(0, 0, 0);
