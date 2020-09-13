@@ -29,7 +29,7 @@ namespace PSYCHO.ApplyEmissives
         MyStringHash BlockTexture;
 
         // USER CHANGABLE VARIABLES
-        Color FullyWorkiongEmissiveColor = new Color(242, 110, 80);
+        Color FullyWorkingEmissiveColor = new Color(242, 110, 80);
         Color BustedEmissiveColor = new Color(0, 0, 0);
         Color EmissiveColor = new Color(0, 0, 0);
 
@@ -124,9 +124,9 @@ namespace PSYCHO.ApplyEmissives
             {
                 if (Block.IsWorking)
                 {
-                    if (EmissiveColor != FullyWorkiongEmissiveColor || _force)
+                    if (EmissiveColor != FullyWorkingEmissiveColor || _force)
                     {
-                        EmissiveColor = FullyWorkiongEmissiveColor;
+                        EmissiveColor = FullyWorkingEmissiveColor;
                         Block.SetEmissiveParts("Emissive2", EmissiveColor, 10f);
                     }
                 }
